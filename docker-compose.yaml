@@ -1,0 +1,28 @@
+version: "3"
+services:
+  mongo: 
+    #image: givemelife/zapping-front:latest
+    image: mongo:latest
+    ports:
+      - 27017:27017
+  auth: 
+      image: givemelife/express-auth:latest
+      # build:
+      #   context: auth
+      #   dockerfile: Dockerfile
+      ports: 
+        - 4000:4000
+  streaming:
+    image: givemelife/go-filesystem:latest
+    # build:
+    #   context: go_app
+    #   dockerfile: Dockerfile
+    ports:
+      - 10000:10000
+  zapping-front: 
+    image: givemelife/zapping-front:latest
+    # build:
+    #   context: zapping_challenge_frontend
+    #   dockerfile: Dockerfile
+    ports: 
+      - 8080:8080
